@@ -1,0 +1,19 @@
+.main {
+  padding: 10px;
+  width: 150px;
+  text-align: center;
+}
+
+.main img {
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 1s ease;
+}
+
+.active {
+  transform: scale(1.1);
+}
+
+.main p {
+  margin: 0;
+}
