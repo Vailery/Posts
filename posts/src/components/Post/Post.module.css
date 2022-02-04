@@ -18,3 +18,14 @@
 .main p {
   margin: 0;
 }
+
+p.author {
+  margin-top: 10px;
+  padding: 5px;
+  border-top: 2px solid #d3d3d3;
+  background-color: rgb(240, 240, 240);
+}
+
+.author a {
+  text-decoration: none;
+}
