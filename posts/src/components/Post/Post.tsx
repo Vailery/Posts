@@ -1,5 +1,5 @@
 import styles from "./Post.module.css";
-import { IPostWithAuthor } from "../PostList/PostList";
+import { IPostWithAuthor } from "../../redux/reducers/postsReducer";
 
 interface IProps {
   item: IPostWithAuthor;

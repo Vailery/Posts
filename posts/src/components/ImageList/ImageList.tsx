@@ -17,7 +17,7 @@ export const ImageList = () => {
   return (
     <div className={styles.main}>
       {posts.slice(0, counter).map((item) => (
-        <Image item={item} />
+        <Image item={item} key={"id" + Math.random().toString(16).slice(2)} />
       ))}
     </div>
   );

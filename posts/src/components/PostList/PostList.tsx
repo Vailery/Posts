@@ -1,23 +1,18 @@
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addPosts } from "../../redux/actions/postsActions";
+import { IPost } from "../../redux/reducers/postsReducer";
+import { IState } from "../../redux/store";
 import { Post } from "../Post/Post";
 import styles from "./PostList.module.css";
-
-export interface IPost {
-  id: string;
-  userId: string;
-  body: string;
-  title: string;
-}
-
-export interface IPostWithAuthor extends IPost {
-  author: string;
-}
 
 const POST_PER_PAGE = 5;
 
 export const PostList = () => {
-  const [posts, setPosts] = useState<IPostWithAuthor[]>([]);
   const [page, setPage] = useState(1);
+  const dispatch = useDispatch();
+
+  const posts = useSelector((state: IState) => state.postsReducer.posts);
 
   useEffect(() => {
     Promise.all([
@@ -40,7 +35,7 @@ export const PostList = () => {
         return { ...item, author: author.name };
       });
 
-      setPosts(newPosts);
+      dispatch(addPosts(newPosts));
     });
   }, []);
 
@@ -54,7 +49,7 @@ export const PostList = () => {
     <div>
       <div className={styles.main}>
         {postSliced.map((item) => (
-          <Post item={item} />
+          <Post item={item} key={"id" + Math.random().toString(16).slice(2)} />
         ))}
       </div>
 
@@ -66,3 +61,6 @@ export const PostList = () => {
     </div>
   );
 };
+function newPosts(newPosts: any): { type: string; mas: string[] } {
+  throw new Error("Function not implemented.");
+}
